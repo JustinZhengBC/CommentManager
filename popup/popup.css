@@ -1,0 +1,52 @@
+body {
+  width: 500px;
+}
+
+button.active {
+  width: 26px;
+  vertical-align: top;
+  background-color: lightblue;
+}
+
+button.inactive {
+  width: 26px;
+  vertical-align: top;
+  background-color: white;
+}
+
+button.move-button {
+  width: 23px;
+  text-align: center;
+  padding: 0;
+  background-color: grey;
+}
+
+button.edit-button {
+  width: 40px;
+  background-color: lightgrey;
+}
+
+button.delete-button {
+  width: 26px;
+  background-color: red;
+}
+
+#button-finish, #button-reset {
+  margin-top: 30px;
+}
+
+span.comment-text {
+  display: inline-block;
+  width: 362px;
+  word-wrap: break-word;
+}
+
+textarea {
+  resize: none;
+  width: 362px;
+}
+
+select {
+  margin-left: 5px;
+  margin-right: 5px;
+}

@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Formattable Clipboard",
+  "version": "1.0",
+  "description": "A clipboard for multiple items. Items can be customizable templates",
+  "background": { "scripts": ["background.js"] },
+  "permissions": ["activeTab", "clipboardWrite", "storage"],
+  "commands": {
+    "_execute_page_action": {
+      "suggested_key": {
+        "default": "MacCtrl+Z"
+      },
+      "description": "Activate the extension"
+    }
+  },
+  "page_action": {
+    "browser_style": true,
+    "default_icon": {
+      "19": "icons/icon-19.png",
+      "38": "icons/icon-38.png"
+    },
+    "default_title": "Activate",
+    "default_popup": "popup/popup.html",
+    "show_matches": ["<all_urls>"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "extensionname@example.org"
+    }
+  }
+}
