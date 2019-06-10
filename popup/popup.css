@@ -2,6 +2,14 @@ body {
   width: 500px;
 }
 
+div.loading {
+  height: 500px;
+}
+
+button.wide-button {
+  width: 500px;
+}
+
 button.active {
   width: 26px;
   vertical-align: top;
@@ -31,7 +39,7 @@ button.delete-button {
   background-color: red;
 }
 
-#button-finish, #button-reset {
+button.bottom-button {
   margin-top: 30px;
 }
 

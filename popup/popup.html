@@ -4,18 +4,14 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <h1>Comment Manager</h1>
-    <button id="button-sort-alpha">Sort alphabetically</button>
-    <button id="button-sort-new">Sort by most recently used</button>
-    <button id="button-sort-used">Sort by most used</button>
-    <button id="button-add">Add new comment</button>
-    <div id="comment-table"></div>
-    <button id="button-finish">Done!</button>
-    <button id="button-reset">Delete ALL comments</button>
-    <script src="utilities.js"></script>
+    <div id="app"></div>
+    <script src="libraries/react.js"></script>
+    <script src="libraries/react-dom.js"></script>
     <script src="model.js"></script>
-    <script src="view.js"></script>
-    <script src="controller.js"></script>
+    <script src="Buttons.js"></script>
+    <script src="Row.js"></script>
+    <script src="CommentTable.js"></script>
+    <script src="App.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

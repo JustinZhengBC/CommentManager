@@ -1,5 +1,5 @@
 // add-text.js
-// receives text from the popup and pastes it into the currently active field
+// receives text from the popup and pastes it into the clipboard
 
 (function() {
   if (window.hasRun) {
