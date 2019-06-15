@@ -5,7 +5,6 @@ class Comment {
   constructor(contents, comment) {
     // sanitize comment for html display
     this.rawText = contents;
-    this.justMade = false;
 
     // comment parameter optional, copies usage data if provided
     if (comment) {

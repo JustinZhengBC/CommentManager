@@ -39,7 +39,10 @@ class CommentTable extends React.Component {
   setupShortcutBindings() {
     let toggle = this.toggleButtonAt.bind(this);
     let finish = this.props.finishFunction;
-    document.onkeypress = function(event) {
+    let handler = function(event) {
+      if (this.props.editing != -1) {
+        return;
+      }
       if (event.keyCode > 48 && event.keyCode < 58) { // if a number is pressed, toggle that button
         let index = event.keyCode - 49;
         toggle(index);
@@ -48,8 +51,9 @@ class CommentTable extends React.Component {
       } else if (event.keyCode == 10 || event.keyCode == 13 || event.key == 'z') { // if enter or z is pressed, we are done
         finish();
       }
-    };
-}
+    }
+    document.onkeypress = handler.bind(this);
+  }
 
   render() {
     let rows = [];
@@ -64,7 +68,9 @@ class CommentTable extends React.Component {
             shiftUpFunction: this.shiftUpAt.bind(this),
             shiftDownFunction: this.shiftDownAt.bind(this),
             editFunction: this.changeCommentAt.bind(this),
-            deleteFunction: this.deleteAt.bind(this)
+            deleteFunction: this.deleteAt.bind(this),
+            editing: this.props.editing == i,
+            selectFunction: this.props.selectFunction
           }
         )
       );

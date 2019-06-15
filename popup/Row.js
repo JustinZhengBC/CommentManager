@@ -1,23 +1,21 @@
 class Row extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editing: props.comment.justMade};
   }
 
   edit() {
-    this.setState({editing: true});
+    this.props.selectFunction(this.props.index);
   }
 
   onTextAreaChange(event) {
     let newComment = new Comment(event.target.value, this.props.comment);
-    this.setState({editing: false});
     this.props.editFunction(this.props.index, newComment);
   }
 
   onTextAreaKeyDown(event) {
     if (event.keyCode == 10 || event.keyCode == 13) {
+      event.preventDefault(); // document is listening for shortcuts
       let newComment = new Comment(event.target.value, this.props.comment);
-      this.setState({editing: false});
       this.props.editFunction(this.props.index, newComment);
     }
     event.stopPropagation(); // document is listening for shortcuts
@@ -41,11 +39,12 @@ class Row extends React.Component {
 
   render() {
     var mainElement;
-    if (this.state.editing) {
+    if (this.props.editing) {
       mainElement = React.createElement(
         "textarea",
         {
           id: "editing",
+          placeholder: "Type comment here",
           rows: 3,
           onBlur: this.onTextAreaChange.bind(this),
           onKeyDown: this.onTextAreaKeyDown.bind(this)

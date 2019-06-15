@@ -1,3 +1,3 @@
 # Comment Manager
 
-Experimental branch that uses react. See master branch for more details.
+Experimental branch that uses react and redux. See master branch for more details.
