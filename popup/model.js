@@ -2,6 +2,7 @@
 // defines the comment class
 
 class Comment {
+
   constructor(contents, comment) {
     // sanitize comment for html display
     this.rawText = contents;
@@ -24,17 +25,27 @@ class Comment {
     this.texts = [];
     this.rawTexts = [];
     this.blanks = [];
+    this.actives = [];
     let segments = contents.split(/^{|\s{/); // split on left curly brackets at start of string or after space
     let firstText = segments.shift();
-    this.texts.push(sanitize(firstText));
+    this.texts.push(this.sanitize(firstText));
     this.rawTexts.push(firstText);
     for (let segment of segments) {
-      let idx = segment.search("}");
+      var idx = segment.search("}");
+      if (idx == -1) {
+        idx = 0;
+      }
       let options = segment.substring(0, idx)
-      this.blanks.push(sanitize(options.replace(/\\\|/g, "❘")).split("|")); // replace escaped | with similar unicode char (&#10072)
+      this.blanks.push(this.sanitize(options.replace(/\\\|/g, "❘")).split("|")); // replace escaped | with similar unicode char (&#10072)
+      this.actives.push(this.blanks[this.blanks.length - 1][0]);
       let text = segment.substring(idx + 2);
-      this.texts.push(sanitize(text));
+      this.texts.push(this.sanitize(text));
       this.rawTexts.push(text);
     }
   }
+
+  sanitize(text) {
+    return text.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\\{/g, "{");
+  }
+  
 }

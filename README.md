@@ -8,6 +8,8 @@ This extension is still a work in progress.
 
 # Usage
 
+Click the blue square in the URL bar to use the extension. On Windows, the shortcut for this is `ctrl+q`. On Macs, the shortcut for this is `ctrl+z` (not command, ctrl).
+
 `1-9` for quick-selecting comments.
 
 `z` or `enter` to save changes and copy the selected comments (each on its own line) to the clipboard.
@@ -22,7 +24,17 @@ If the extension does not react, the local data might be corrupted. Try deleting
 
 # Installation
 
-This extension is not signed (yet) so you will have to install it as a temporary extension by entering "about:debugging" in the URL bar and selecting the manifest.json file when prompted for the extension to install.
+This extension is not signed (yet) so you will have to install it as a temporary extension.
+
+1. Download this extension and extract it into its own folder
+
+2. Enter "about:debugging" in the URL bar
+
+3. Choose "Load Temporary Add-on"
+
+4. When prompted for a file, select manifest.json
+
+Reinstallation will be required if the browser is restarted. The comment data should be preserved, however.
 
 # Data usage
 
