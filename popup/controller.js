@@ -13,35 +13,19 @@ class PopupController {
     for (let comment of this.comments) {
       comment.selected = false;
     }
-    browser.tabs.query({currentWindow: true, active: true})
-    .then((tabs) => {
-      for (let tab of tabs) {
-        browser.tabs.sendMessage(
-          tab.id,
-          {action: "save", comments: this.comments}
-        ).then((result) => {
-          window.close();
-        });
-      }
-    });
+    chrome.storage.sync.set({comments: this.comments}, window.close);
   }
 
   // calls update on view because it is asynchronous
   loadAndUpdateComments() {
-    browser.tabs.query({currentWindow: true, active: true})
-    .then((tabs) => {
-      for (let tab of tabs) {
-        browser.tabs.sendMessage(
-          tab.id,
-          {action: "load"}
-        ).then((result) => {
-          if (result.comments) {
-            this.comments = result.comments;
-            this.view.updateComments();
-          }
-        });
+    chrome.storage.sync.get(["comments"],
+      (result) => {
+        if (result.comments) {
+          this.comments = result.comments;
+          this.view.updateComments();
+        }
       }
-    });
+    );
   }
 
   setComments(newComments) {
@@ -133,17 +117,7 @@ class PopupController {
   }
   
   finish() {
-    browser.tabs.query({currentWindow: true, active: true})
-    .then((tabs) => {
-      for (let tab of tabs) {
-        browser.tabs.sendMessage(
-          tab.id,
-          {action: "paste", text: this.getFinalizedText()}
-        ).then(() => {
-          this.saveComments();
-        });
-      }
-    });
+    navigator.clipboard.writeText(this.getFinalizedText());
+    this.saveComments();
   }
-
 }

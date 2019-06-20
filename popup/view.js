@@ -120,7 +120,7 @@ class PopupView {
         this.toggleCommentAt(index);
         let button = document.getElementById("button-" + index);
         button.focus();
-      } else if (event.keyCode == 10 || event.keyCode == 13 || event.key == 'z') { // if enter or z is pressed, we are done
+      } else if (event.keyCode == 10 || event.keyCode == 13 || event.key == 'z') { // if enter or z is pressed, we are done]
         this.controller.finish();
       }
     };
@@ -164,13 +164,15 @@ class PopupView {
     var self = this;
     newChild.onkeypress = function(event) {
       if (event.keyCode == 10 || event.keyCode == 13) {
+        event.stopImmediatePropagation(); // document is listening for shortcuts
         let newComment = new Comment(this.value, oldComment);
         self.controller.setCommentAt(index, newComment);
         self.updateCommentAt(index);
+      } else if (event.keyCode > 48 && event.keyCode < 58) {
+        event.stopImmediatePropagation(); // document is listening for shortcuts
       }
-      event.stopPropagation(); // document is listening for shortcuts
     }
-    newChild.onchange = function() {
+    newChild.onblur = function() {
       let newComment = new Comment(this.value, oldComment);
       self.controller.setCommentAt(index, newComment);
       self.updateCommentAt(index);

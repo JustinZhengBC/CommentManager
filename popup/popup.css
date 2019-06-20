@@ -2,6 +2,10 @@ body {
   width: 500px;
 }
 
+button.big {
+  width: 100%;
+}
+
 button.active {
   width: 26px;
   vertical-align: top;
