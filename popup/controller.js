@@ -35,8 +35,10 @@ class PopupController {
           tab.id,
           {action: "load"}
         ).then((result) => {
-          this.comments = result.comments;
-          this.view.updateComments();
+          if (result.comments) {
+            this.comments = result.comments;
+            this.view.updateComments();
+          }
         });
       }
     });
