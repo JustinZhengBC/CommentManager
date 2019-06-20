@@ -24,7 +24,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "extensionname@example.org"
+      "id": "commentmanager@example.org"
     }
   }
 }

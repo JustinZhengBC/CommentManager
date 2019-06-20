@@ -34,7 +34,7 @@ class PopupView {
   
     let toggleButton = document.createElement("button");
     toggleButton.id = "button-" + index;
-    toggleButton.innerHTML = index + 1;
+    toggleButton.textContent = index + 1;
     toggleButton.classList = [comment.selected ? "active" : "inactive"];
     toggleButton.onmouseup = this.toggleCommentAt.bind(this, index);
     element.appendChild(toggleButton);
@@ -43,25 +43,25 @@ class PopupView {
 
     let upElement = document.createElement("button");
     upElement.classList = ["move-button"];
-    upElement.innerHTML = "&uarr;";
+    upElement.textContent = "↑";
     upElement.onmouseup = this.shiftCommentUp.bind(this, index);
     element.appendChild(upElement);
 
     let downElement = document.createElement("button");
     downElement.classList = ["move-button"];
-    downElement.innerHTML = "&darr;";
+    downElement.textContent = "↓";
     downElement.onmouseup = this.shiftCommentDown.bind(this, index);
     element.appendChild(downElement);
 
     let editElement = document.createElement("button");
     editElement.classList = ["edit-button"];
-    editElement.innerHTML = "Edit";
+    editElement.textContent = "Edit";
     editElement.onmouseup = this.editCommentAt.bind(this, index);
     element.appendChild(editElement);
 
     let deleteElement = document.createElement("button");
     deleteElement.classList = ["delete-button"];
-    deleteElement.innerHTML = "X";
+    deleteElement.textContent = "X";
     deleteElement.onmouseup = this.deleteCommentAt.bind(this, index);
     element.appendChild(deleteElement);
     
@@ -89,7 +89,7 @@ class PopupView {
       selectElement.onchange = handler.bind(this);
       for (let option of comment.blanks[i]) {
         let optionElement = document.createElement("option");
-        optionElement.innerHTML = option;
+        optionElement.textContent = option;
         if (option == comment.actives[i]) {
           optionElement.selected = true;
         }
