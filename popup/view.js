@@ -170,7 +170,7 @@ class PopupView {
       }
       event.stopPropagation(); // document is listening for shortcuts
     }
-    newChild.onchange = function() {
+    newChild.onblur = function() {
       let newComment = new Comment(this.value, oldComment);
       self.controller.setCommentAt(index, newComment);
       self.updateCommentAt(index);
