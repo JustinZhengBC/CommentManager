@@ -2,8 +2,6 @@
 
 Firefox extension that adds a sortable and orderable comment list popup with multiple selection.
 
-This extension is still a work in progress.
-
 ![screenshot](/screenshot.png)
 
 # Usage
@@ -24,17 +22,7 @@ If the extension does not react, the local data might be corrupted. Try deleting
 
 # Installation
 
-This extension is not signed (yet) so you will have to install it as a temporary extension.
-
-1. Download this extension and extract it into its own folder
-
-2. Enter "about:debugging" in the URL bar
-
-3. Choose "Load Temporary Add-on"
-
-4. When prompted for a file, select manifest.json
-
-Reinstallation will be required if the browser is restarted. The comment data should be preserved, however.
+This extension can be obtained [here](https://addons.mozilla.org/en-US/firefox/addon/comment-manager/)
 
 # Data usage
 
